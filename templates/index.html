@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #d70505;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        h2 {
+            color: #080000;
+            margin-top: 20px;
+            font-family: garamond, serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 30px;
+        }
+
+        .dish-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .dish-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dish-item button {
+            background-color: #db2020;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .dish-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .dish-item {
+            transition: transform 0.2s ease;
+        }
+
+        .dish-item:hover {
+            transform: scale(1.05);
+        }
+
+        .cart {
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .controls button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #db2020;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the Tomato</h1>
+    </header>
+
+    <div class="container">
+        <h2>Order Your Favorite Dishes!</h2>
+
+        <!-- List of dishes -->
+        <div class="dish-list">
+            <div class="dish-item">
+                <img src="{{ url_for('static', filename='images/ChickenBiriyani.png') }}" alt="Biriyani">
+                <h3>Chicken Biriyani</h3>
+                <p>₹150</p>
+
+                <div class="controls">
+                    <button class="remove-from-cart" data-item="Chicken Biriyani">−</button>
+                    <span id="qty-Chicken Biriyani">0</span>
+                    <button class="add-to-cart" data-item="Chicken Biriyani" data-price="150">+</button>
+                </div>
+            </div>
+
+            <div class="dish-item">
+                <img src="{{ url_for('static', filename='images/Panner.png') }}" alt="Paneer Butter Masala">
+                <h3>Paneer Butter Masala</h3>
+                <p>₹100</p>
+                <div class="controls">
+                    <button class="remove-from-cart" data-item="Paneer Butter Masala">−</button>
+                    <span id="qty-Paneer Butter Masala">0</span>
+                    <button class="add-to-cart" data-item="Paneer Butter Masala" data-price="100">+</button>
+                </div>
+            </div>
+
+            <div class="dish-item">
+                <img src="{{ url_for('static', filename='images/ButterChicken.png') }}" alt="Butter Chicken">
+                <h3>Butter Chicken</h3>
+                <p>₹200</p>
+                <div class="controls">
+                    <button class="remove-from-cart" data-item="Butter Chicken">−</button>
+                    <span id="qty-Butter Chicken">0</span>
+                    <button class="add-to-cart" data-item="Butter Chicken" data-price="200">+</button>
+                </div>
+            </div>
+
+            <div class="dish-item">
+                <img src="{{ url_for('static', filename='images/Pizza.png') }}" alt="Pizza">
+                <h3>Pizza</h3>
+                <p>₹250</p>
+                <div class="controls">
+                    <button class="remove-from-cart" data-item="Pizza">−</button>
+                    <span id="qty-Pizza">0</span>
+                    <button class="add-to-cart" data-item="Pizza" data-price="250">+</button>
+                </div>
+            </div>
+
+            <div class="dish-item">
+                <img src="{{ url_for('static', filename='images/Burger.png') }}" alt="Burger">
+                <h3>Burger</h3>
+                <p>₹120</p>
+                <div class="controls">
+                    <button class="remove-from-cart" data-item="Burger">−</button>
+                    <span id="qty-Burger">0</span>
+                    <button class="add-to-cart" data-item="Burger" data-price="120">+</button>
+                </div>
+            </div>
+            
+            <div class="dish-item">
+                <img src="{{ url_for('static', filename='images/Panner.png') }}" alt="Dosa">
+                <h3>Dosa</h3>
+                <p>₹80</p>
+                <div class="controls">
+                    <button class="remove-from-cart" data-item="Dosa">−</button>
+                    <span id="qty-Dosa">0</span>
+                    <button class="add-to-cart" data-item="Dosa" data-price="80">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart">
+            <h3>Your Cart:</h3>
+            <ul id="cart-list">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <br>
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" placeholder="Enter your address" required><br><br>
+            <button onclick="placeOrder()" class="button">Place Order</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        let cart = [];
+
+        // Add item to cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const itemName = this.getAttribute('data-item');
+                const itemPrice = Number(this.getAttribute('data-price'));
+
+                // Check if item is already in cart
+                const existingItem = cart.find(item => item.name === itemName);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+                }
+
+                // Update cart UI
+                updateCart();
+            });
+        });
+
+        document.querySelectorAll('.remove-from-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const itemName = this.getAttribute('data-item');
+
+                const existingItem = cart.find(item => item.name === itemName);
+
+                if (existingItem) {
+                    existingItem.quantity -= 1;
+
+                    if (existingItem.quantity <= 0) {
+                        cart = cart.filter(item => item.name !== itemName);
+                    }
+                }
+
+                updateCart();
+            });
+        });
+
+        // Update the cart UI
+        function updateCart() {
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('cart-item');
+
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                cartItem.textContent = `${item.name} x${item.quantity} - ₹${itemTotal}`;
+                cartList.appendChild(cartItem);
+
+                // Update quantity near buttons
+                const qtySpan = document.getElementById(`qty-${item.name}`);
+                if (qtySpan) {
+                    qtySpan.innerText = item.quantity;
+                }
+            });
+
+    // Reset qty for items not in cart
+    document.querySelectorAll('[id^="qty-"]').forEach(span => {
+        const name = span.id.replace('qty-', '');
+        const item = cart.find(i => i.name === name);
+        span.innerText = item ? item.quantity : 0;
+    });
+
+    // Total
+    if (cart.length > 0) {
+        const totalItem = document.createElement('li');
+        totalItem.innerHTML = `<strong>Total: ₹${total}</strong>`;
+        cartList.appendChild(totalItem);
+    }
+}
+
+        // Place the order
+        function placeOrder() {
+            const address = document.getElementById('address').value;
+            if (cart.length === 0) {
+                alert('Please add items to your cart.');
+                return;
+            }
+            if (!address) {
+                alert('Please enter your delivery address.');
+                return;
+            }
+
+            // Send the order details to the backend (for now, just log the order)
+            const orderDetails = {
+                cart: cart,
+                address: address
+            };
+            console.log('Order placed:', orderDetails);
+
+            // Send the order to Flask backend using fetch
+            fetch('/place_order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderDetails)  // Send the data as JSON
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert('Order placed successfully!');
+                    // Reset the cart
+                    cart = [];
+                    updateCart();
+                    document.getElementById('address').value = '';  // Clear the address field
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong!');
+            });
+        }
+    </script>
+</body>
+</html>
