@@ -1,6 +1,10 @@
-# Tomato - Food Ordering & SQL Analytics App
+# Tomato
+### Food Ordering & SQL Analytics App
 
-Live Demo: http://Dhyana5.pythonanywhere.com/
+Live Demo: 
+```
+http://Dhyana5.pythonanywhere.com/
+```
 ---
 
 ## Overview
@@ -15,7 +19,12 @@ A full-stack food ordering application built primarily to showcase SQL skills, r
 ---
 
 ## Tech Stack
-Python, Flask, MySQL, HTML, CSS, JavaScript
+- Python
+- Flask
+- MySQL
+- HTML
+- CSS
+- JavaScript
 ---
 
 ## SQL Highlights
