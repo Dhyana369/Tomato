@@ -8,7 +8,8 @@ http://Dhyana5.pythonanywhere.com/
 ---
 
 ## Overview
-A full-stack food ordering application built primarily to showcase SQL skills, relational database design, and analytical queries.
+
+- A full-stack food ordering application built primarily to showcase SQL skills, relational database design, and analytical queries.
 ---
 
 ## Features
