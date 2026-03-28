@@ -1,4 +1,4 @@
-# Tomato
+# 🍅 Tomato
 ### Food Ordering & SQL Analytics App
 
 Live Demo: 
