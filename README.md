@@ -2,9 +2,9 @@
 ### Food Ordering & SQL Analytics App
 
 Live Demo: 
-```
+
 http://Dhyana5.pythonanywhere.com/
-```
+
 ---
 
 ## Overview
@@ -36,6 +36,6 @@ http://Dhyana5.pythonanywhere.com/
 ## Project Structure
 - `app_index.py` – Flask backend
 - `templates/` – UI
-- `static/` – images & styling
+- `static/` – images
 - `data_sql.sql` – schema + queries
 - `data_sql.ipynb` – SQL analysis
