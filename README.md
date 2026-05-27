@@ -3,7 +3,7 @@
 
 Live Demo: 
 
-[http://Dhyana5.pythonanywhere.com/](https://dhyana369.github.io/Tomato/)(https://dhyana369.github.io/Tomato/)
+https://dhyana369.github.io/Tomato/
 ---
 
 ## Overview
